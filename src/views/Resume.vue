@@ -1,5 +1,5 @@
 <template>
-<Navbar/>
+
 <section id="journey">
   <h1 class="section-title"  style="padding-top: 100px;">RES<span>U</span>ME</h1>
   <div class="timeline">

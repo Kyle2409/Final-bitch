@@ -1,44 +1,41 @@
 
-    
-    <!-- <div class="testimonials">
-        <h1>Testimonials</h1>
-        <div class="test-body">
-            <div class="item">
-                <img src="https://i.postimg.cc/bNpXmLmH/Alex.jpg">
-                <div class="name">Matthew Perkins</div>
-                <small class="desig">Driver</small>
-                <div class="share"><i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-instagram"></i></div>
-                <p>Just had my laptop resurrected and the engineer was fantastic. Very patient, very knowledgeable and knew exactly what he was doing. If I ever have another computer problem, I'll definitely give these guys a call. They are professionals and they have great customer service. Great price, great job, thanks a lot!</p>
-            </div>
-            <div class="item">
-                <img src="https://i.postimg.cc/Njj3cFqK/Bongani3.png">
-                <div class="name">Elizabeth Johnson</div>
-                <small class="desig">Real Estate agent</small>
-                <div class="share"><i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-instagram"></i></div>
-                <p>My friend recommended Repair & Fix to me when I had some issues with my laptop. I contacted them and they were very understanding, helpful and prompt with dealing with my requirements. Your consultants were happy to talk me through everything during the first consultation. Thank you!</p>
-            </div>
-            <div class="item">
-                <img src="https://i.postimg.cc/hPrk6xwF/Nadeem.jpg">
-                <div class="name">Walter Knight</div>
-                <small class="desig">Photographer</small>
-                <div class="share"><i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-instagram"></i></div>
-                <p>I have worked with Repair & Fix for several years. They re-built a computer for me and later upgraded it and now it feels just like a new one. The value, quality, and follow-up are outstanding. I highly recommend this company, their professionalism and customer care are unmatched.</p>
-            </div>
-        </div>
-        <button>View All Testimonials</button>    
-    </div>   -->
-    
-  <template>
-  <Navbar/>
-  <MDBCard style="width: 18rem">
-    <MDBCardImg top src="https://mdbootstrap.com/img/new/standard/nature/182.webp" alt="..."/>
-    <MDBCardBody>
-      <MDBCardText>
-        Some quick example text to build on the card title and make up the bulk of the
-        card's content.
-      </MDBCardText>
-    </MDBCardBody>
-  </MDBCard>
+    <template>
+<div class="card-list">
+  <div class="col-sm-4 col-sm-offset-0 col-xs-12">
+    <div class="card">
+      <figure class="profile"><img src="https://i.postimg.cc/bJdZG1GW/Hannah.jpg"/>
+        <figcaption>
+          <p class="name">Hannah Dalwai</p>
+          <p class="position">Colleague at Life Choices</p>
+        </figcaption>
+      </figure>
+      <div class="body">Kyle is a helpful team player, who always meets his deadlines in a timely manner.</div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs">
+    <div class="card">
+      <figure class="profile"><img src="https://i.postimg.cc/Nfzq0qRB/Alex.jpg"/>
+        <figcaption>
+          <p class="name">Alex Sexwale</p>
+          <p class="position">Lecturer at Life Choices</p>
+        </figcaption>
+      </figure>
+      <div class="body">Kyle is a gifted talent who works hard to produce quality work.</div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs">
+    <div class="card">
+      <figure class="profile"><img src="https://i.postimg.cc/Jhs8ZxqN/Nadeem.jpg"/>
+        <figcaption>
+          <p class="name">Nadeem Johnson</p>
+          <p class="position">Colleague at Life Choices</p>
+        </figcaption>
+      </figure>
+      <div class="body">Kyle excels in creativity being dedicated and passionate who believes firmly in persistence and patience.
+  </div>
+</div>
+  </div>
+</div>
 </template>
 
 
@@ -77,102 +74,68 @@ setup() {
 </script>
 
 <style>
-html{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI';
-    font-weight: 200;
+.profile img{
+  border-radius: 2px;
 }
-
-h1, h2, h3, h4 ,h5 ,h6, p{
-    margin: 0;
-    padding: 0;
+.card-list {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  max-width: 1440px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
 }
-body *{
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+.card {
+  background-color: transparent;
+  border: 5px solid transparent;
+  color: #333;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  vertical-align: top;
 }
-
-
-.testimonials{
-    padding-bottom: 2.2em; 
-    text-align: center;
-    color: #666;
+.profile {
+  background-color: white;
+  margin: 0;
+  height: 200px;
 }
-.testimonials h1{
-    color: #222;
-    font-size: 1.3em;
+.profile img {
+  display: inline-block;
+  height: 200px;
 }
-.testimonials .test-body{padding: 1em;}
-.testimonials .item{ 
-    text-align: center;
-    padding: 1em 0;
+.profile figcaption {
+  display: inline-block;
+  padding: 10px;
+  vertical-align: middle;
 }
-.testimonials img{
-    width: 4.8em;
-    height: 4.8em;
-    border-radius: 50%;
+.profile .name {
+  color: #252830;
+  font-size: 21px;
 }
-.testimonials .name{color: blue;}
-.testimonials .desig{
-    font-size: 0.7em;
-    padding: 0.5em 0;
-    color: #777;
+.profile .position {
+  color: #7A7A7A;
+  font-size: 13px;
 }
-.testimonials .share{
-    margin: 0 auto;
-    width: 5em;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+.body {
+  background-color: #013C4D;
+  color: white;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 1px;
+  line-height: 25px;
+  padding: 25px;
+  height: 150px;
 }
-.testimonials i{
-    color: #bfbfbf;
-    padding: 0.5em 0;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
-    cursor: pointer;
+p {
+  margin: 0;
+  padding: 0;
 }
-.testimonials i:hover{color: blue;}
-.testimonials p{
-    max-width: 27em;
-    margin: 0 auto;
-    font-size: 0.8em;
+body {
+  background-color: #252830;
 }
-.testimonials button{
-    font-size: 1em;
-    background-color: blue;
-    color: white;
-    padding: 0.8em 2em;
-    border-radius: 2em;
-    border: 0;
-    cursor: pointer;
-    -webkit-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-}
-.testimonials button:hover{
-    background-color: #444;
-}
-
-@media (min-width: 38.4rem){
-    .testimonials{
-        font-size: 1.2em;
-    }
-    .testimonials .test-body{
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-    }
-    .testimonials p{
-        text-align: left;
-        padding: 1em;
-    }
-}
-
 </style>

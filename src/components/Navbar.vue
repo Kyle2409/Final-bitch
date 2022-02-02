@@ -1,46 +1,88 @@
 <template>
 <div id="nav">
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark sticky">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"> <h1><span>K</span>YLE <span>M</span>C <span>B</span>RYNE</h1></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-        <router-link to="/">Home</router-link> 
-        </li><br>
-         <li class="nav-item">
-          <router-link :to="{name:'About'}">About</router-link> 
-        </li><br>
-        <li class="nav-item">
-            <router-link :to="{name: 'Resume'}">Resume</router-link> 
-        </li><br>
-        <li class="nav-item">
-          <router-link :to="{name:'Projects'}">projects</router-link> 
-        </li><br>
-        <li class="nav-item">
-          <router-link :to="{name:'Testimonials'}">Testimonials</router-link> 
-        </li><br>
-        <li class="nav-item">
-          <router-link :to="{ name: 'Contact'}">contact</router-link> 
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <MDBNavbar expand="lg" light bg="light" container>
+    <MDBNavbarBrand href="#"><h1><span>K</span>YLE <span>M</span>C <span>B</span>RYNE</h1></MDBNavbarBrand>
+    <!-- Toggle button -->
+    <MDBNavbarToggler
+      target="#navbarRightAlignExample"
+      @click="collapse5 = !collapse5"
+    ></MDBNavbarToggler>
+    <!-- Collapsible wrapper -->
+    <MDBCollapse v-model="collapse5" id="navbarRightAlignExample">
+      <MDBNavbarNav right class="mb-2 mb-lg-0">
+        <!-- Right links -->
+        <MDBNavbarItem router-link to="/" >
+         <p>Home</p> 
+        </MDBNavbarItem>
+        <MDBNavbarItem router-link :to="{name:'About'}">
+        <p>About</p> 
+        </MDBNavbarItem>
+        <MDBNavbarItem router-link :to="{name: 'Resume'}">
+        <p>Resume</p> 
+        </MDBNavbarItem>
+        <MDBNavbarItem  router-link :to="{ name: 'Projects' }">
+       <p>Projects</p> 
+        </MDBNavbarItem>
+        <MDBNavbarItem router-link :to="{ name: 'Testimonials' }">
+        <p>Testimonials</p> 
+        </MDBNavbarItem>
+        <MDBNavbarItem router-link :to="{ name: 'Contact'}">
+        <p>Contact</p> 
+        </MDBNavbarItem>
+        <!-- Navbar dropdown -->
+       
+           
+       
+        <!-- Right links -->
+      </MDBNavbarNav>
+    </MDBCollapse>
+    <!-- Collapsible wrapper -->
+  </MDBNavbar>
+
+
 </div>
 </template>
 
 <script>
-export default {
-
-}
+  import {
+    MDBNavbar,
+    MDBNavbarToggler,
+    MDBNavbarBrand,
+    MDBNavbarNav,
+    MDBNavbarItem,
+    MDBCollapse,
+    MDBDropdown,
+    MDBDropdownToggle,
+    MDBDropdownMenu,
+    MDBDropdownItem
+  } from 'mdb-vue-ui-kit';
+  import { ref } from 'vue';
+  export default {
+    components: {
+      MDBNavbar,
+      MDBNavbarToggler,
+      MDBNavbarBrand,
+      MDBNavbarNav,
+      MDBNavbarItem,
+      MDBCollapse,
+      MDBDropdown,
+      MDBDropdownToggle,
+      MDBDropdownMenu,
+      MDBDropdownItem
+    },
+    setup() {
+      const collapse5 = ref(false);
+      const dropdown8 = ref(false);
+      return {
+        collapse5,
+        dropdown8
+      }
+    }
+  };
 </script>
 
 <style>
-.navbar-brand h1{
+/* .navbar-brand h1{
   color: white !important;
 
 }
@@ -65,10 +107,16 @@ background: crimson;
 div#navbarNav{
   justify-content: end;
 }
+
+#Nav .h1{
+  color: white;
+} */
  span {
 	color: crimson;
 }
-#Nav .h1{
-  color: white;
+
+#nav p{
+  font-size: 20px;
+  padding-left: 100px;
 }
 </style>

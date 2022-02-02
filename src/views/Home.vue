@@ -1,5 +1,5 @@
 <template>
-<Navbar/>
+
 <div id="home" class="Kyles-section" style="">
   <div class="hero">
   <div class="container">
@@ -104,11 +104,11 @@ export default {
 </script>
 <style>
 .Kyles-section{
-  background-image:url(https://i.postimg.cc/qRHRfhwy/christopher-sardegna-b-Sm-Kli4-OTIY-unsplash.jpg);
+  background-image:url(https://i.postimg.cc/B6BfZjBV/rsz-1christopher-sardegna-bsmkli4otiy-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
-  height: 90.5vh !important;
+  height: 95.5vh !important;
 }
 #home::after{
   

@@ -1,5 +1,5 @@
 <template>
-<Navbar/>
+<!-- <Navbar/> -->
  <section id="contact" >
  
     <div class="contact container">
@@ -70,14 +70,16 @@
    
           
   </section>
+  <Footer/>
 </template>
 
 <script>
 import Navbar from '../components/Navbar.vue'
+import Footer from "@/components/footer.vue"
 export default {
   name: 'Contact',
   components: {
-  Navbar
+  Navbar,Footer
   }
 }
 </script>

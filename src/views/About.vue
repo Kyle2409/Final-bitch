@@ -1,5 +1,5 @@
 <template>
-<Navbar/>
+
 <div class="top">
   <div class="top-content">
     
@@ -51,19 +51,6 @@
         ></a>
       </div>
       </div>
-    </div>
-    
-    <div class="right">
-      
-      <div class="languagues">
-        <div class="con-title la-title">INFO</div>
-        <div class="la-content">
-         <h1 class="section-title">About <span>me</span></h1>
-        <h2>Full Stack Developer</h2>
-        <p>I am a dedicated, hard-working individual and a fast learner. I am calm and respectful and willing to learn new things in order to achieve my goals.<br><br>My passion for coding came from a great experience where I was given the chance to manage the website of a local business, and I found myself enjoying it more than I thought I would.<br><br>In my free time I enjoy playing games, reading, watching Anime and occasionally putting my role-playing face on to play Dungeons & Dragons.</p>
-        </div>
-      </div>
-      
       <div class="skills">
         <div class="con-title sk-title">SKILLS</div>
         <div class="skill-content">
@@ -128,19 +115,34 @@
         </div>
       </div>
     </div>
+    
+    <div class="right">
+      
+      <div class="languagues">
+        <div class="con-title la-title">INFO</div>
+        <div class="la-content">
+         <h1 class="section-title">About <span>me</span></h1>
+        <h2>Full Stack Developer</h2>
+        <p>I am a dedicated, hard-working individual and a fast learner. I am calm and respectful and willing to learn new things in order to achieve my goals.<br><br>My passion for coding came from a great experience where I was given the chance to manage the website of a local business, and I found myself enjoying it more than I thought I would.<br><br>In my free time I enjoy playing games, reading, watching Anime and occasionally putting my role-playing face on to play Dungeons & Dragons.</p>
+        </div>
+      </div>
+      
+      
+    </div>
       
     </div>
   </div>
 
-  
+  <Footer/>
 </template>
 
 <script>
+import Footer from "@/components/footer.vue"
 import Navbar from '../components/Navbar.vue'
 export default {
   name: 'About',
   components: {
-  Navbar
+  Navbar,Footer
   }
 }
 </script>
@@ -165,8 +167,8 @@ export default {
   /* background-color: #f2f2e9; */
   color: #ffffff;
   font-family: lato, sans-serif;
-  /* font-weight: 300;
-  line-height: 36px; */
+  /* font-weight: 300; */
+  /* line-height: 36px; */
   transition-duration: 0.5s;
 }
 
@@ -243,11 +245,14 @@ p{
   color: black;
 }
 .contact {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   margin-left: 50px;
   margin-top: 20px;
 }
-
+h2{
+  color: rgb(0, 0, 0);
+}
 .url {
   padding-left: 10px;
   padding-top: 10px;
@@ -659,5 +664,10 @@ h1{
 }
 .fab fa-codepen{
   color: black;
+}
+.content{
+  background-image: url(http://wallpaper-house.com/wallpaper-id-414897.php);
+background-size: cover;
+background-repeat: no-repeat;
 }
 </style>
