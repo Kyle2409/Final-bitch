@@ -8,6 +8,7 @@ import Contact from '../views/Contact.vue'
 import ProjectDetails from '../views/ProjectDetails.vue'
 
 
+
 const routes = [
   {
     path: '/',

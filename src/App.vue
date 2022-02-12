@@ -10,6 +10,25 @@ import Footer from "@/components/footer.vue"
 export default {
   components: {
     Navbar,Footer
+  },
+  methods:{
+handleSubmit(){
+  console.log(this.email,this.name,this.message)
+  fetch('http://localhost:5000/contact', {
+  method: 'POST',
+  body: JSON.stringify({
+    name:this.name,
+    email:this.email,
+    message:this.message,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => alert(json.msg))
+  .catch((e) => alert(e.msg));
+},
   }
 }
 </script>

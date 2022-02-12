@@ -6,42 +6,15 @@
       <div>
         <h1 class="section-title">Contact <span>info</span></h1>
       </div>
-      <form
-      action="https://formspree.io/f/mzbyqnvl"
-      method="POST"
-    >
-          <h1>Contact Me</h1>
-              <label for="email" class="form-label"><span style="color: #14173a;font-size: 16px;">Email address:</span></label>
-              <div class="input-group mb-4">
-                <span class="input-group-text">
-                  <i class="bi bi-envelope-fill text-secondary"></i>
-                </span>
-                <input type="text" id="email" class="form-control" name="email" placeholder="e.g. Kyle@example.com" />
-              </div>
-              <label for="name" class="form-label"><span style="color: #14173a;font-size: 16px;">Full Name:</span></label>
-              <div class= "mb-4 input-group">
-                <span class="input-group-text">
-                  <i class="bi bi-person-fill text-secondary"></i>
-                </span>
-                <input type="text" id="name" class="form-control" name="name" placeholder="e.g. Kyle Mc Bryne" />
-              </div>
-              <label for="subject" class="form-label"><span style="color: #14173a;font-size: 16px;">Subject:</span></label>
-              <div class="mb-4 input-group">
-                <span class="input-group-text">
-                  <i class="bi bi-person-fill text-secondary"></i>
-                </span>
-                <input type="text" id="subject" class="form-control" name="subject" placeholder="Subject ...." />
-              </div>
-              <div class="mb-4 mt-5 form-floating"> 
-                <label for="query" placeholder="Message"></label>
-                <textarea class="form-control" id="text"  for="query" style="height: 140px ;width: 100%;" name="text" placeholder="Message"></textarea>
-                
-              </div>
-              <div class="mb-4 text-center">
-                <button type="submit" target="_blank" class="bn30" style="width: 160px;height: 50px;background-color: crimson; border-radius: 100px; border: 2px solid black;"><span style="color: white; ">Send Message</span></button>
-                
-              </div>
-            </form>
+      <form @submit.prevent="handleSubmit">
+        <label>Name:</label>
+        <input type="name" v-model="name" required>
+        <label>Email:</label>
+        <input type= "email" v-model="email" required>
+        <label>Message:</label>
+        <textarea name="messsage" id="" cols="40" rows="10" required v-model="message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
       <div class="contact-items">
         <div class="contact-item">
           <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
@@ -80,7 +53,38 @@ export default {
   name: 'Contact',
   components: {
   Navbar,Footer
-  }
+  },
+  data() {
+    return{
+    name: "",
+    email: "",
+    message: "",
+    }
+},
+methods: {
+    handleSubmit(){
+        console.log("Form has been submitted");
+        console.log(this.name);
+        console.log(this.email);
+        console.log(this.message);
+
+        fetch("https://backend-kyle24.herokuapp.com/contact", {
+  method: "POST",
+  body: JSON.stringify({
+    name:this.name,
+    email:this.email,
+    message:this.message,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => alert(json.msg))
+  .catch((e) => alert(e.msg));
+    }
+    
+},
 }
 </script>
 
@@ -127,6 +131,9 @@ export default {
 	font-size: 2.5rem;
 	font-weight: 500;
 	margin-bottom: 5px;
+}
+#contact p{
+  color: black
 }
 #contact .contact-info h2 {
 	color: white;
@@ -219,6 +226,9 @@ export default {
 .bn30 {
 	outline: none;
 
+}
+*{
+  color: black !important;
 }
 .contact container{
     align-items: center;

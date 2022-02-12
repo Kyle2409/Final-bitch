@@ -15,7 +15,7 @@
     <div v-for="Project of Projects" :key="Project.id" class="Project">
       <MDBCard>
         <a v-mdb-ripple="{ color: 'light' }">
-          <MDBCardImg :src="Project.image" top alt="..." />
+          <MDBCardImg :src="Project.img" top alt="..." />
         </a>
         <MDBCardBody>
           <MDBCardTitle>{{ Project.title }}</MDBCardTitle>
@@ -64,7 +64,7 @@ export default {
     };
   },
   mounted() {
-    fetch("http://localhost:3000/Projects")
+    fetch("https://backend-kyle24.herokuapp.com/projects")
       .then((res) => res.json())
       .then((data) => (this.Projects = data))
       .catch((err) => console.log(err.message));

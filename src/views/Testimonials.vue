@@ -1,141 +1,234 @@
+<template>
+ <div class="project">
+    <h1 id="projects-header">Testimonial</h1>
+    <div class="navbar-devider">
+      <div class="nd-1"></div>
+      <div class="nd-2"></div>
+      <div class="nd-3"></div>
+      <div class="nd-4"></div>
+      <div class="nd-5"></div>
+      <div class="nd-6"></div>
+      <div class="nd-7"></div>
+    </div>
+  </div>
+  <div class="projects" v-if="Testimonials.length">
+    <div v-for=" Testimonial of Testimonials" :key="Testimonial.id" class="Testimonial">
+      <MDBCard>
+        <a v-mdb-ripple="{ color: 'light' }">
+          <MDBCardImg :src="Testimonial.img" top alt="..." />
+        </a>
+        <MDBCardBody>
+          <MDBCardTitle>{{ Testimonial.title }}</MDBCardTitle>
+          <MDBCardText>
+            {{ Testimonial.details }}
+          </MDBCardText>
+          
+        </MDBCardBody>
+      </MDBCard>
+    </div>
+  </div>
 
-    <template>
-<div class="card-list">
-  <div class="col-sm-4 col-sm-offset-0 col-xs-12">
-    <div class="card">
-      <figure class="profile"><img src="https://i.postimg.cc/bJdZG1GW/Hannah.jpg"/>
-        <figcaption>
-          <p class="name">Hannah Dalwai</p>
-          <p class="position">Colleague at Life Choices</p>
-        </figcaption>
-      </figure>
-      <div class="body">Kyle is a helpful team player, who always meets his deadlines in a timely manner.</div>
-    </div>
+  <div v-else>
+    <p>Loading Projects...</p>
   </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs">
-    <div class="card">
-      <figure class="profile"><img src="https://i.postimg.cc/Nfzq0qRB/Alex.jpg"/>
-        <figcaption>
-          <p class="name">Alex Sexwale</p>
-          <p class="position">Lecturer at Life Choices</p>
-        </figcaption>
-      </figure>
-      <div class="body">Kyle is a gifted talent who works hard to produce quality work.</div>
-    </div>
-  </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs">
-    <div class="card">
-      <figure class="profile"><img src="https://i.postimg.cc/Jhs8ZxqN/Nadeem.jpg"/>
-        <figcaption>
-          <p class="name">Nadeem Johnson</p>
-          <p class="position">Colleague at Life Choices</p>
-        </figcaption>
-      </figure>
-      <div class="body">Kyle excels in creativity being dedicated and passionate who believes firmly in persistence and patience.
-  </div>
-</div>
-  </div>
-</div>
 </template>
 
-
 <script>
-import { ref } from "vue";
-  import { MDBCarousel } from "mdb-vue-ui-kit";
-import Navbar from '../components/Navbar.vue'
-export default {
-name: 'Testimonials',
-components: {
-Navbar,MDBCarousel
-},
-setup() {
-      const items6 = [
-        {
-          src: "https://mdbootstrap.com/img/Photos/Slides/img%20(15).webp",
-          alt: "..."
-        },
-        {
-          src: "https://mdbootstrap.com/img/Photos/Slides/img%20(22).webp",
-          alt: "..."
-        },
-        {
-          src: "https://mdbootstrap.com/img/Photos/Slides/img%20(23).webp",
-          alt: "..."
-        }
-      ];
-      const carousel6 = ref(0);
-      return {
-        items6,
-        carousel6
-      };
-    }
-  };
 
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImg,
+  MDBBtn,
+  mdbRipple,
+} from "mdb-vue-ui-kit";
+export default {
+  components: {
+    MDBCard,
+    MDBCardBody,
+    MDBCardTitle,
+    MDBCardText,
+    MDBCardImg,
+    MDBBtn,
+  },
+  data() {
+    return {
+      Testimonials: [],
+    };
+  },
+  mounted() {
+    fetch("http://backend-kyle24.herokuapp.com/testimonials")
+      .then((res) => res.json())
+      .then((data) => (this.Testimonials = data))
+      .catch((err) => console.log(err.message));
+  },
+
+  directives: {
+    mdbRipple,
+  },
+};
 </script>
 
 <style>
-.profile img{
-  border-radius: 2px;
-}
-.card-list {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  max-width: 1440px;
+.projects {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 40px;
+  grid-gap: 1rem;
+  padding: 1rem 80px;
+  font-size: 1.2rem;
 }
-.card {
-  background-color: transparent;
-  border: 5px solid transparent;
-  color: #333;
-  overflow: hidden;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  vertical-align: top;
+.img {
+  border-radius: 2px !important;
+  width: 300px;
+  height: 300px;
 }
-.profile {
-  background-color: white;
-  margin: 0;
-  height: 200px;
+#projects-header {
+  margin-top: 60px;
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
-.profile img {
-  display: inline-block;
-  height: 200px;
+.navbar-devider {
+  width: 8%;
+  height: 4px;
+  border-radius: 50px;
+  background: black;
+  margin-inline: auto;
 }
-.profile figcaption {
-  display: inline-block;
-  padding: 10px;
-  vertical-align: middle;
+.navbar-devider div {
+  width: 14.28571429%;
+  height: 100%;
+  float: left;
 }
-.profile .name {
-  color: #252830;
-  font-size: 21px;
+@keyframes nd1 {
+  0% {
+    width: 7%;
+  }
+  35% {
+    width: 25%;
+  }
+  70% {
+    width: 10%;
+  }
+  100% {
+    width: 7%;
+  }
 }
-.profile .position {
-  color: #7A7A7A;
-  font-size: 13px;
+@keyframes nd2 {
+  0% {
+    width: 24%;
+  }
+  35% {
+    width: 11%;
+  }
+  70% {
+    width: 8%;
+  }
+  100% {
+    width: 24%;
+  }
 }
-.body {
-  background-color: #013C4D;
-  color: white;
-  font-size: 15px;
-  font-style: italic;
-  letter-spacing: 1px;
-  line-height: 25px;
-  padding: 25px;
-  height: 150px;
+@keyframes nd3 {
+  0% {
+    width: 10%;
+  }
+  35% {
+    width: 20%;
+  }
+  70% {
+    width: 12%;
+  }
+  100% {
+    width: 10%;
+  }
 }
-p {
-  margin: 0;
-  padding: 0;
+@keyframes nd4 {
+  0% {
+    width: 22%;
+  }
+  35% {
+    width: 4%;
+  }
+  70% {
+    width: 15%;
+  }
+  100% {
+    width: 22%;
+  }
 }
-body {
-  background-color: #252830;
+@keyframes nd5 {
+  0% {
+    width: 15%;
+  }
+  35% {
+    width: 12%;
+  }
+  70% {
+    width: 11%;
+  }
+  100% {
+    width: 15%;
+  }
+}
+@keyframes nd6 {
+  0% {
+    width: 17%;
+  }
+  35% {
+    width: 5%;
+  }
+  70% {
+    width: 24%;
+  }
+  100% {
+    width: 17%;
+  }
+}
+@keyframes nd7 {
+  0% {
+    width: 5%;
+  }
+  35% {
+    width: 23%;
+  }
+  70% {
+    width: 20%;
+  }
+  100% {
+    width: 5%;
+  }
+}
+.navbar-devider .nd-1 {
+  background: rgb(218, 68, 68);
+  animation: nd1 3s infinite;
+}
+.navbar-devider .nd-2 {
+  background: rgb(212, 86, 86);
+  animation: nd2 3s infinite;
+}
+.navbar-devider .nd-3 {
+  background: rgb(209, 105, 105);
+  animation: nd3 3s infinite;
+}
+.navbar-devider .nd-4 {
+  background: rgb(204, 125, 125);
+  animation: nd4 3s infinite;
+}
+.navbar-devider .nd-5 {
+  background: rgb(204, 143, 143);
+  animation: nd5 3s infinite;
+}
+.navbar-devider .nd-6 {
+  background: rgb(194, 159, 159);
+  animation: nd6 3s infinite;
+}
+.navbar-devider .nd-7 {
+  background: rgb(197, 179, 179);
+  animation: nd7 3s infinite;
 }
 </style>
