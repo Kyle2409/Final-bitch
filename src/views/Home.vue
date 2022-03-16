@@ -5,7 +5,7 @@
   <div class="container">
     <div class="hero-inner">
       <div class="content">
-          <span class="hello">I AM</span>
+          <span class="hello">I AM </span>
           <h1 class="name">Kyle Mc Bryne</h1>
       <div class="job">
           <span class="job-headline rotate-1">
